@@ -1,4 +1,4 @@
-[![CI](https://github.com/dmc/learn-cicd-typescript-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/dmc/learn-cicd-typescript-starter/actions/workflows/ci.yml)
+![PASSING](https://github.com/DCaraballo-design/learn-cicd-typescript-starter/actions/workflows/ci.yml/badge.svg)
 
 # learn-cicd-typescript-starter (Notely)
 
