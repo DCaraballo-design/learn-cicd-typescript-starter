@@ -40,5 +40,4 @@ jobs:
             --allow-unauthenticated \
             --project skilled-array-465919-i0 \
             --max-instances=4 \
-            --clear-env-vars \
             --set-env-vars DATABASE_URL=${{ secrets.DATABASE_URL }},DATABASE_AUTH_TOKEN=${{ secrets.DATABASE_AUTH_TOKEN }}
