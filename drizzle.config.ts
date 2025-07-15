@@ -7,7 +7,9 @@ export default defineConfig({
   schema: "./src/db/schema.ts",
   dialect: "turso",
   dbCredentials: {
-    url: config.db.url || "",
+    url:
+      config.db.url ||
+      "libsql://notely-db-dcaraballo-design.aws-us-east-2.turso.io",
     authToken: config.db.authToken,
   },
 });

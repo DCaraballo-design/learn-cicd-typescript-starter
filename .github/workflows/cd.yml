@@ -33,4 +33,11 @@ jobs:
       - name: Build and push Docker image
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/skilled-array-465919-i0/notely-ar-repo/notely-app:${{ github.sha }} .
       - name: Deploy to Cloud Run
-        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/skilled-array-465919-i0/notely-ar-repo/notely-app:${{ github.sha }} --region us-central1 --allow-unauthenticated --project skilled-array-465919-i0 --max-instances=4
+        run: |
+          gcloud run deploy notely \
+            --image us-central1-docker.pkg.dev/skilled-array-465919-i0/notely-ar-repo/notely-app:${{ github.sha }} \
+            --region us-central1 \
+            --allow-unauthenticated \
+            --project skilled-array-465919-i0 \
+            --max-instances=4 \
+            --set-env-vars DATABASE_URL=${{ secrets.DATABASE_URL }},DATABASE_AUTH_TOKEN=${{ secrets.DATABASE_AUTH_TOKEN }}
