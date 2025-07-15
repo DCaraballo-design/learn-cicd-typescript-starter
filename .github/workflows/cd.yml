@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,8 +28,8 @@ jobs:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
-      - name: Use gcloud CLI
-        run: gcloud info
+      - name: Run database migrations
+        run: npm run db:migrate
       - name: Build and push Docker image
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/skilled-array-465919-i0/notely-ar-repo/notely-app:${{ github.sha }} .
       - name: Deploy to Cloud Run
